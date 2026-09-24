@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from codrone_edu.drone import *
 
-import SensorFilter
+from constructs import SensorFilter
 
 drone = Drone()
 drone.pair()

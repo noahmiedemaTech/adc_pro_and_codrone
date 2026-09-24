@@ -15,7 +15,7 @@ class Filter:
             reading = self.sensor()
             self.readings.append(reading)
 
-        # Remove spikes
+        # Remove extremes
         self.sorted_data = sorted(self.readings)
         self.sorted_data.pop(0)
         self.sorted_data.pop(-1)
