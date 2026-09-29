@@ -1,5 +1,6 @@
 import matplotlib
-matplotlib.use('QtAgg')
+
+matplotlib.use("QtAgg")
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from codrone_edu.drone import *
@@ -8,16 +9,17 @@ from constructs import SensorFilter
 
 drone = Drone()
 drone.pair()
-front_range = SensorFilter.Filter(lambda: drone.get_front_range('in'), 6)
+front_range = SensorFilter.Filter(lambda: drone.get_front_range("in"), 6)
 
 
 data = []
 
 fig, ax = plt.subplots()
 
+
 def update(frame):
     reading = front_range.update()
-    #reading = drone.get_front_range('in')
+    # reading = drone.get_front_range('in')
     data.append(reading)
 
     # Keep the graph from growing forever
@@ -31,11 +33,7 @@ def update(frame):
     ax.set_xlabel("Reading")
     ax.set_ylabel("Distance (in)")
 
-ani = FuncAnimation(
-    fig,
-    update,
-    interval=100,
-    cache_frame_data=False
-)
+
+ani = FuncAnimation(fig, update, interval=100, cache_frame_data=False)
 
 plt.show()
