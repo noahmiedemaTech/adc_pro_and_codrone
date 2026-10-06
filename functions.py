@@ -1,10 +1,22 @@
-from constructs import Constants, SensorFilter
+import Constants
+import SensorFilter
+
+
+def handle_gamepad_input(drone):
+    lx = drone.get_left_joystick_x() / 10
+    ly = drone.get_left_joystick_y() / 10
+    rx = drone.get_right_joystick_x() / 10
+    ry = drone.get_right_joystick_y() / 10
+    lt = 5 * 2 
+    
+    return lx, ly, rx, ry, lt
+
 
 
 # drone, target box (1 or 2), do you want to use coordinate
 def enter_holes(drone, target_box: int, coordinate: bool):
-    bottom_range = SensorFilter.Filter(lambda: drone.get_bottom_range("in"), 5)
-    front_range = SensorFilter.Filter(lambda: drone.get_front_range("in"), 5)
+    #bottom_range = SensorFilter.Filter(lambda: drone.get_bottom_range("in"), 5)
+    #front_range = SensorFilter.Filter(lambda: drone.get_front_range("in"), 5)
     if target_box == 1:
         x_pos = Constants.x_pos_box_1
         y_pos = Constants.y_pos_box_1

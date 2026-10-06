@@ -1,15 +1,14 @@
 import matplotlib
-
 matplotlib.use("QtAgg")
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 from codrone_edu.drone import *
+from matplotlib.animation import FuncAnimation
 
-from constructs import SensorFilter
+import SensorFilter
 
 drone = Drone()
 drone.pair()
-front_range = SensorFilter.Filter(lambda: drone.get_front_range("in"), 6)
+front_range = SensorFilter.Filter(lambda: drone.get_bottom_range("in"), 6)
 
 
 data = []

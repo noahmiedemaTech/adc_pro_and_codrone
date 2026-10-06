@@ -1,6 +1,7 @@
 import time
 
 from codrone_edu.drone import Drone
+
 from constructs import Constants, functions
 
 drone = Drone()
@@ -8,6 +9,12 @@ drone.pair()
 
 try:
     drone.takeoff()
+    # x
+    # y
+    # z 
+    # velocity
+    # heading
+    # rotational velocity
     drone.send_absolute_position(
         functions.meter_to_inch(1),
         functions.meter_to_inch(120),
@@ -27,7 +34,7 @@ try:
     print("Sleep Finished")
 
 
-except Exception as e:
+except Exception as e:  # noqa: BLE001
     print(e)
 
 finally:
