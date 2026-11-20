@@ -5,7 +5,7 @@ import csv
 import time
 from pathlib import Path
 
-from codrone_edu.drone import *
+from codrone_edu.drone import Drone
 
 import functions
 
@@ -17,7 +17,7 @@ def clamp_stick(value: float) -> int:
     """Clamp joystick values to the CoDrone EDU expected range (-100..100)."""
     try:
         value_int = int(value)
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         value_int = 0
     return max(-100, min(100, value_int))
 

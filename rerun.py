@@ -27,15 +27,18 @@ def handle_break(info):
 
 
 def main():
+
+    flying = False
     try:
         drone.pair()
-        flying = False
         # ! Add drone takeoff command here
         drone.takeoff()
-        
+
         flying = True
         state = State.Reading
-        
+        # Add a loop to read joystick data
+        # from the CSV file and control the drone accordingly
+
         with open("joystick_log.csv", newline="") as file:
             reader = csv.DictReader(file)
             for row in reader:
@@ -59,7 +62,7 @@ def main():
         print(f"Failed to connect to the drone: {e}")
 
     finally:
-        if flying:
+        if flying == True:
             drone.land()
 
 
